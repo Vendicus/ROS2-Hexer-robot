@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-                'publisher_exam= vision_rpi_hexabot.publisher:main',
-                'listener_exam = vision_rpi_hexabot.subsriber:main',
+                'publisher_rpi= vision_rpi_hexabot.publisher:main',
+                'subscriber_rpi= vision_rpi_hexabot.subsriber:main',
                            ],
                 },
 
