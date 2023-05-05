@@ -1,25 +1,33 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import Int16
+from adafruit_servokit import ServoKit
+kit = ServoKit(channels=16)
 
+from hexapod_message.msg import ThetasLeg
 
 class MinimalSubscriber(Node):
 
     def __init__(self):
-        super().__init__('simple_rpi_subscriber')
+        super().__init__('theta_subscriber')
         self.subscription = self.create_subscription(
-            Int16,
+            ThetasLeg,
             'topic',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
 
-    def listener_callback(self, msg):
-        self.get_logger().info('I heard: "%d"' % msg.data)
+    def listener_callback(self, msg: ThetasLeg):
+        kit.servo[0].angle = msg.theta_1
+        kit.servo[1].angle = msg.theta_2
+        kit.servo[2].angle = msg.theta_3
 
 
 def main(args=None):
+    kit.servo[0].angle = 90
+    kit.servo[1].angle = 90
+    kit.servo[2].angle = 110
+
     rclpy.init(args=args)
 
     minimal_subscriber = MinimalSubscriber()
