@@ -2,7 +2,7 @@
 import numpy as np
 
 def tourning(tourning_value):
-    np.set_printoptions(precision=3)
+    np.set_printoptions(precision=1)
 
     point1 = np.array([-246.922,  41.0])
     point2 = np.array([-246.922, -41.0])

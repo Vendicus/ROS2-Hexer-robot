@@ -1,7 +1,9 @@
 import rclpy
 from rclpy.node import Node
+import numpy as np
+import time
 
-from std_msgs.msg import Int16
+from std_msgs.msg import int
 
 
 class MinimalSubscriber(Node):
@@ -9,7 +11,7 @@ class MinimalSubscriber(Node):
     def __init__(self):
         super().__init__('simple_rpi_subscriber')
         self.subscription = self.create_subscription(
-            Int16,
+            int,
             'topic',
             self.listener_callback,
             10)
@@ -17,6 +19,8 @@ class MinimalSubscriber(Node):
 
     def listener_callback(self, msg):
         self.get_logger().info('I heard: "%d"' % msg.data)
+
+
 
 
 def main(args=None):
