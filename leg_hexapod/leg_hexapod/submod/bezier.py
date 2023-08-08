@@ -17,17 +17,28 @@ def bezier_curve(Start_x, Start_y, Start_z, End_x, End_y, End_z):
     End = np.array([End_x, End_y, End_z])
 
     # counting atan for 3D direction of curve
-    a = np.arctan((Start[1] - End[1])/( Start[0] - End[0])) 
+    if (np.abs(Start[0] - End[0])) <= 0.5:
+        a = 0
+    else:
+        a = np.arctan((Start[1] - End[1])/( Start[0] - End[0])) 
+
     # counting cos and sin for points coordinates
     cos_a = np.cos(a)
     sin_a = np.sin(a) 
     
     # counting arrays for floating points
-    P_1 = np.array([ Start[0] - (20* cos_a), Start[1] - (26* sin_a), Start[2]])
-    P_2 = np.array([ Start[0] - (26* cos_a), Start[1] - (26* sin_a), Start[2] + 20])
-    P_3 = np.array([ (Start[0] + End[0])/2, (Start[1] + End[1])/2, ((Start[2] + End[2])/2)+100])
-    P_4 = np.array([ End[0] + (20* cos_a), End[1] + (26* sin_a), End[2] + 20])
-    P_5 = np.array([ End[0] + (26* cos_a), End[1] + (26* sin_a), End[2]])
+    if Start[0] < End[0]:
+        P_1 = np.array([ Start[0] - (20* cos_a), Start[1] - (26* sin_a), Start[2]])
+        P_2 = np.array([ Start[0] - (26* cos_a), Start[1] - (26* sin_a), Start[2] + 20])
+        P_3 = np.array([ (Start[0] + End[0])/2, (Start[1] + End[1])/2, ((Start[2] + End[2])/2)+150])
+        P_4 = np.array([ End[0] + (20* cos_a), End[1] + (26* sin_a), End[2] + 20])
+        P_5 = np.array([ End[0] + (26* cos_a), End[1] + (26* sin_a), End[2]])
+    else:
+        P_1 = np.array([ Start[0] + (20* cos_a), Start[1] + (26* sin_a), Start[2]])
+        P_2 = np.array([ Start[0] + (26* cos_a), Start[1] + (26* sin_a), Start[2] + 20])
+        P_3 = np.array([ (Start[0] + End[0])/2, (Start[1] + End[1])/2, ((Start[2] + End[2])/2)+150])
+        P_4 = np.array([ End[0] - (20* cos_a), End[1] - (26* sin_a), End[2] + 20])
+        P_5 = np.array([ End[0] - (26* cos_a), End[1] - (26* sin_a), End[2]])
 
     # arrays for points x, y, z in one list 
     Point_x = np.array([Start[0], P_1[0], P_2[0], P_3[0], P_4[0], P_5[0], End[0]])
@@ -44,6 +55,9 @@ def bezier_curve(Start_x, Start_y, Start_z, End_x, End_y, End_z):
     # calculating bezier 
     for t in range(0,t_table.size):
        
+        if np.abs(Start[0] - End[0]) <= 0.5:
+            yield Start[0], Start[1], Start[2] 
+            break
 
         # reanalizing bezier
         Bezier_curve_x = 0.0 
@@ -51,6 +65,7 @@ def bezier_curve(Start_x, Start_y, Start_z, End_x, End_y, End_z):
         Bezier_curve_z = 0.0 
 
         for i in range(n):
+            
             for j in range(i+1): 
                 i_factorial *= j                
                 if i_factorial == 0:
@@ -69,4 +84,6 @@ def bezier_curve(Start_x, Start_y, Start_z, End_x, End_y, End_z):
             Bezier_curve_z += binomial_theorem * Point_z[i]
             
         # return on one iteration
-        yield Bezier_curve_x, Bezier_curve_y, Bezier_curve_z 
+        if np.abs(Start[0] - End[0]) > 0.5:
+            yield Bezier_curve_x, Bezier_curve_y, Bezier_curve_z 
+        

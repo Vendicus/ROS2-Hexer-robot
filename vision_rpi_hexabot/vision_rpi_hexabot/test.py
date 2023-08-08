@@ -1,69 +1,44 @@
+import tflite_runtime.interpreter as tflite 
+import cv2 
+#interpreter = tflite.Interpreter(model_path="/home/michal/ros2_ws/src/ROS2-Hexer-robot/data/lite-model_ssd_mobilenet_v1_100_320_uint8_nms_1.tflite")
 import numpy as np
-import time
+import os
 
-import rclpy
-from rclpy.node import Node
+#loading image to process
+main_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
+file_to_process_path = os.path.join(main_dir_path,'resource','plane.jpg')
+label_file = os.path.join(main_dir_path, 'resource', 'labels.txt')
 
-import inverse_kinematics_optimalisation as ik
-import bezier
-import tourning as t
+#loading labels for object recognition
+label = open(label_file,"r")
+label_array = label.readlines()
 
-speed = 0
-tourning_var = 1000000
-Start = np.array([0.0, 145.0, -160.0])
+#load tensorflow and allocate its path
+interpreter = tflite.Interpreter(model_path = "/home/michal/ros2_ws/src/ROS2-Hexer-robot/data/lite-model_ssd_mobilenet_v1_100_320_uint8_nms_1.tflite")
+interpreter.allocate_tensors()
 
-class test(Node):
-    def __init__(self):
-        super().__init__('test')
-        self.publisher_ = self.create_publisher(MyMessage, 'topic', 10)
+# Get input and output tensors.
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
 
-    def publish_values(self, theta_1, theta_2, theta_3):
-        msg = MyMessage()
-        msg.theta_1 = theta_1
-        msg.theta_2 = theta_2
-        msg.theta_3 = theta_3
-        self.get_logger().info('Publishing: "%f" thetas' % msg.theta_1)
-        self.publisher_.publish(msg)
+# opencv technics to resize and optimize image
+camera_img = cv2.imread(file_to_process_path)
+file_to_process_path = cv2.resize(camera_img,(320,320))
+file_to_process_path = file_to_process_path.reshape(1, 320, 320, 3)
+file_to_process_path = file_to_process_path.astype(np.uint8)
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = test()
+# Test the model on input data.
+input_shape = input_details[0]['shape']
+input_data = np.array(file_to_process_path, dtype=np.uint8)
+interpreter.set_tensor(input_details[0]['index'], input_data)
 
-    for i in ik.inverse_kinematics(Start[0], Start[1], Start[2], 0.0, 0.0, -90.0):
-        convert = [float(konv) for konv in i]
-        theta_1 = convert[0] 
-        theta_2 = convert[1] 
-        theta_3 = convert[2] 
-        node.publish_values(theta_1, theta_2, theta_3)
-        time.sleep(speed)
+#predictor of objects
+interpreter.invoke()
 
-    iteration = 0
+# The function `get_tensor()` returns a copy of the tensor data.
+# Use `tensor()` in order to get a pointer to the tensor.
+output_data = interpreter.get_tensor(output_details[1]['index'])
 
-    for i in tourn.tourning(tourning_var) :
-        print(" tourning values : " + str(i) + "\n\n\n")
-
-        if iteration == 0:
-            for j in bezier.bezier_curve(Start[0], Start[1], Start[2], i[0], i[1], -160.0) :
-                for z in ik.inverse_kinematics(j[0], j[1], j[2],theta_1  - 90.0, theta_2 - 90.0, theta_3 - 180.0):
-                    convert = [float(konv) for konv in z]
-                    theta_1 = convert[0] 
-                    theta_2 = convert[1] 
-                    theta_3 = convert[2] 
-                    node.publish_values(theta_1, theta_2, theta_3)
-                    time.sleep(speed)
-
-        else :
-            for j in ik.inverse_kinematics( i[0], i[1], -160.0, theta_1 - 90.0, theta_2 - 90.0, theta_3 - 180.0):
-                convert = [float(konv) for konv in j]
-                theta_1 = convert[0] 
-                theta_2 = convert[1] 
-                theta_3 = convert[2] 
-                node.publish_values(theta_1, theta_2, theta_3)
-                time.sleep(speed)
-
-        iteration += 1
-    node.destroy_node()
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
+# the end results
+print(output_data)
+print(label_array[int(output_data[0][0])])

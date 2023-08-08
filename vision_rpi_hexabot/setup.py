@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
                 'publisher_rpi = vision_rpi_hexabot.publisher:main',
                 'subscriber_rpi = vision_rpi_hexabot.subsriber:main',
+                'camera_reciver = vision_rpi_hexabot.object_detection:main',
                            ],
                 },
 
