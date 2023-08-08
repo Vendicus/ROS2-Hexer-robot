@@ -22,7 +22,8 @@ setup(
     entry_points={
         'console_scripts': [
         'test_node = leg_hexapod.test:main',
-        'servo_theta_read = leg_hexapod.servo_subscriber:main'
+        'servo_theta_read = leg_hexapod.servo_subscriber:main',
+        'v2_servo_theta_read = leg_hexapod.servo_sub_v2:main'
         ],
     },
 )

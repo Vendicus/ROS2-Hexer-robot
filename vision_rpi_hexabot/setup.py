@@ -20,8 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-
-                'publisher_rpi_node = vision_rpi_hexabot.publisher:main',
+                'camera_publisher = vision_rpi_hexabot.camera_pub:main',
                 'listener_rpi_node = vision_rpi_hexabot.subsriber:main',
 
                            ],
