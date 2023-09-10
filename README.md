@@ -1,9 +1,9 @@
 
-![IMG_20230810_115807](https://github.com/Vendicus/ROS2-Hexer-robot/assets/119676540/4b9171fd-d469-4a6f-a85f-2f3a48ee90b4)
-<p align=center> HEXER v.1.00 during walking.</p>
+![DSCN3856](https://github.com/Vendicus/ROS2-Hexer-robot/assets/119676540/853046b8-2744-4329-b262-f24eaf0fefbf)
+<p align=center> HEXER v.1.00 during walk.</p>
 
 # Intelligent walking hexapod robot with computer vision
-Intelligent RPi 4 based spider robot with computer vision and motion planning. It's full project created by student of AGH in krakow in Poland as his diploma Bachelor engineer work. Created with Middleware ROS2 on Linux Ubuntu 22.05. The robot itself is able to detect ground (by force sensors installed in its feet) and move on terrain with little obstacles. It calculates motion plannig autonomously and is controlled by console controllers (Pygame supported). Operator can move it forward, backward or tourn it.
+Intelligent RPi 4 based spider robot with computer vision and motion planning. It's full project created by student of AGH in krakow in Poland as his diploma Bachelor engineer work. Created with Middleware ROS2 on Linux Ubuntu 22.05. The robot itself is able to detect ground (by force sensors installed in its feet) and move on terrain with little obstacles. It calculates motion plannig autonomously and is controlled by console controllers (Pygame supported). Operator can move it forward, backward or turn it.
 
 For now version 1.00 is avaible but i am currently working on much more stable version 2.00 (with services, actions and some basic computation by RPI 4b).
 
@@ -12,7 +12,7 @@ It contains two sections, one for central computer for operator and one section 
 Warning: Central Computer Main Controller use multithreading executors in ROS2, so if you want to use that code, you need to have multithreaded CPU ! (at least 3 threads)
 
 
-![IMG_20230810_115832](https://github.com/Vendicus/ROS2-Hexer-robot/assets/119676540/5f98e8f9-7055-4235-b04d-a6c150050d12)
+![DSCN3891](https://github.com/Vendicus/ROS2-Hexer-robot/assets/119676540/a32d342f-c50c-48d9-99a6-5ece2fef2c2b)
 <p align=center> HEXER v.1.00, up view</p>
 
 This robot has onboard widerange rpi camera to detect objects in real time by using ssd-mobilenetv3 AI model with COCO library. Model and camera view is controlled by OpenCV. It can detect about 100 objects in real time (20-30 fps) by pipeline in ROS2. The Raspberry PI sends camera images (with changed resolution to save systems resource and work with more fps) directly to main computer. Central computer calculates and detect objects sent by Rpi and show view to operator in real time.
