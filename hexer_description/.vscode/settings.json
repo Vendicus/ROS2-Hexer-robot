@@ -1,0 +1,38 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/michal/ros2_ws/install/vision_rpi_hexabot/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/service_tutorial",
+        "/home/michal/ros2_ws/install/service_tutorial/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/py_launch_example",
+        "/home/michal/ros2_ws/install/py_launch_example/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/install/legs_hexapod/local/lib/python3.10/dist-packages",
+        "/home/michal/ros2_ws/build/leg_hexapod",
+        "/home/michal/ros2_ws/install/leg_hexapod/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/learning_tf2_py",
+        "/home/michal/ros2_ws/install/learning_tf2_py/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/hexer_controller",
+        "/home/michal/ros2_ws/install/hexer_controller/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/install/hexapod_message/local/lib/python3.10/dist-packages",
+        "/home/michal/ros2_ws/install/action_tutorials_interfaces/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/michal/ros2_ws/install/vision_rpi_hexabot/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/service_tutorial",
+        "/home/michal/ros2_ws/install/service_tutorial/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/py_launch_example",
+        "/home/michal/ros2_ws/install/py_launch_example/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/install/legs_hexapod/local/lib/python3.10/dist-packages",
+        "/home/michal/ros2_ws/build/leg_hexapod",
+        "/home/michal/ros2_ws/install/leg_hexapod/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/learning_tf2_py",
+        "/home/michal/ros2_ws/install/learning_tf2_py/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/build/hexer_controller",
+        "/home/michal/ros2_ws/install/hexer_controller/lib/python3.10/site-packages",
+        "/home/michal/ros2_ws/install/hexapod_message/local/lib/python3.10/dist-packages",
+        "/home/michal/ros2_ws/install/action_tutorials_interfaces/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

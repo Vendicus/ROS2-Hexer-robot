@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<robot name="hexer_v_1_0" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="radius_base" value="0.08" />
+    <xacro:property name="base_heigth" value="0.1" />
+    <xacro:property name="length_coxa" value="0.05" />
+    <xacro:property name="length_femur" value="0.07" />
+    <xacro:property name="length_tibia" value="0.27" />
+    <xacro:property name="radius_servo" value="0.021" />
+    <xacro:property name="leg_width" value="0.023" />
+    <xacro:property name="limit_servo_down" value="${-pi / 2.0}" />
+    <xacro:property name="limit_servo_up" value="${pi / 2.0}" />
+    
+
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+    </material>
+    <material name="coxa">
+        <color rgba="0.1 0.1 0.8 1" />
+    </material>
+    <material name="femur">
+        <color rgba="0.1 0.8 0.1 1" />
+    </material> 
+    <material name="tibia">
+        <color rgba="0.8 0.1 0.1 1" />
+    </material> 
+    
+    
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder radius="${radius_base}" length="${base_heigth}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            
+            <material name="grey" />
+        </visual>
+    </link>
+
+    <link name="ground" />
+    <joint name="ground_base_link" type="fixed">
+            <parent link="base_link" />
+            <child link="ground" />
+            <origin xyz="0 0 ${-(length_tibia - 0.1)}" rpy="0 0 0" />
+    </joint>
+
+    <xacro:macro name="leg" params="prefix origin_x origin_y origin_z direction">
+        <link name="${prefix}_coxa_servo">
+            <visual>
+                <geometry>
+                    <cylinder radius="${radius_servo}" length="${leg_width + (leg_width / 2.0)}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <material name="coxa" />
+            </visual>
+        </link>
+        <link name="${prefix}_coxa">
+            <visual>
+                <geometry>
+                    <box size="${length_coxa} ${leg_width} ${leg_width}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <material name="coxa" />
+            </visual>
+        </link>
+        <link name="${prefix}_femur_servo">
+            <visual>
+                <geometry>
+                    <cylinder radius="${radius_servo}" length="${leg_width + (leg_width / 2.0)}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <material name="femur" />
+            </visual>
+        </link>
+        <link name="${prefix}_femur">
+            <visual>
+                <geometry>
+                    <box size="${length_femur} ${leg_width} ${leg_width}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <material name="femur" />
+            </visual>
+        </link>
+        <link name="${prefix}_tibia_servo">
+            <visual>
+                <geometry>
+                    <cylinder radius="${radius_servo}" length="${leg_width + (leg_width / 2.0)}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <material name="tibia" />
+            </visual>
+        </link>
+        <link name="${prefix}_tibia">
+            <visual>
+                <geometry>
+                    <box size="${length_tibia} ${leg_width} ${leg_width}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <material name="tibia" />
+            </visual>
+        </link>
+
+
+        <joint name="${prefix}_coxa_servo_base_joint" type="revolute">
+            <parent link="base_link" />
+            <child link="${prefix}_coxa_servo" />
+            <origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="${direction} ${direction} ${pi / 2.0}" />
+            <axis xyz="0 0 1" />
+            <limit lower="${limit_servo_down}" upper="${limit_servo_up}" velocity="100" effort="100" />
+        </joint>
+        <joint name="${prefix}_coxa_coxa_servo_joint" type="fixed">
+            <parent link="${prefix}_coxa_servo" />
+            <child link="${prefix}_coxa" />
+            <origin xyz="${length_coxa / 2.0} 0 0" rpy="0 0 0" />
+        </joint>
+        <joint name="${prefix}_femur_servo_coxa" type="revolute">
+            <parent link="${prefix}_coxa" />
+            <child link="${prefix}_femur_servo" />
+            <origin xyz="${(length_coxa / 2.0)} 0 0" rpy="${pi / 2.0} 0 0" />
+            <axis xyz="0 0 1" />
+            <limit lower="${limit_servo_down}" upper="${limit_servo_up}" velocity="100" effort="100" />
+        </joint>
+        <joint name="${prefix}_femur_femur_servo_joint" type="fixed">
+            <parent link="${prefix}_femur_servo" />
+            <child link="${prefix}_femur" />
+            <origin xyz="${length_femur / 2.0} 0 0" rpy="0 0 0" />
+        </joint>
+        <joint name="${prefix}_tibia_servo_femur_joint" type="revolute">
+            <parent link="${prefix}_femur" />
+            <child link="${prefix}_tibia_servo" />
+            <origin xyz="${length_femur / 2.0} 0 0" rpy="0 0 0" />
+            <axis xyz="0 0 1" />
+            <limit lower="${limit_servo_down}" upper="${limit_servo_up}" velocity="100" effort="100" />
+        </joint>
+        <joint name="${prefix}_tibia_tibia_servo_joint" type="fixed">
+            <parent link="${prefix}_tibia_servo" />
+            <child link="${prefix}_tibia" />
+            <origin xyz="0 -0.035 0" rpy="0 0 ${pi/ 2.0}" />
+        </joint>
+
+    </xacro:macro>
+
+
+    <xacro:leg prefix="right_up"  origin_x="0.07" origin_y="0.04" origin_z="0" direction="0" />
+    <xacro:leg prefix="right_mid" origin_x="0" origin_y="0.08" origin_z="0" direction="0"  />
+    <xacro:leg prefix="right_down" origin_x="-0.07" origin_y="0.04" origin_z="0" direction="0" />
+
+    <xacro:leg prefix="left_up" origin_x="0.07" origin_y="-0.04" origin_z="0"  direction="${pi}" />
+    <xacro:leg prefix="left_mid" origin_x="0" origin_y="-0.08" origin_z="0"  direction="${pi}" />
+    <xacro:leg prefix="left_down" origin_x="-0.07" origin_y="-0.04" origin_z="0"  direction="${pi}" />
+
+</robot>
