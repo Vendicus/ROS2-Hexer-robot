@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+    </material>
+    <material name="black">
+        <color rgba="0.1 0.1 0.1 1" />
+    </material>
+    <material name="coxa">
+        <color rgba="0.1 0.1 0.8 1" />
+    </material>
+    <material name="femur">
+        <color rgba="0.1 0.8 0.1 1" />
+    </material> 
+    <material name="tibia">
+        <color rgba="0.8 0.1 0.1 1" />
+    </material> 
+
+</robot>

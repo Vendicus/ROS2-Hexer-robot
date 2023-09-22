@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://hexer_description/mesh/base/base_robot.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 0 -0.061" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+    </link>
+    <link name="base_down_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://hexer_description/mesh/base/base_robot_down.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 -0.0017 -0.068" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+    </link>
+    <link name="base_up_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://hexer_description/mesh/base/base_robot_up.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 0.0012 -0.068" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+    </link>
+
+    <joint name="down_base_link" type="fixed">
+        <parent link="base_link" />
+        <child link="base_down_link" />
+        <origin xyz="0 0 -0.063" rpy="0 0 0" />
+    </joint>
+    <joint name="up_base_link" type="fixed">
+        <parent link="base_link" />
+        <child link="base_up_link" />
+        <origin xyz="0 0 0.031" rpy="0 0 0" />
+    </joint>
+
+</robot>
