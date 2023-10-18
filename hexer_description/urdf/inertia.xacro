@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<robot name="hexer_v_1_0" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="main_body_inertia" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.000208" ixy="0" ixz="0" 
+                    iyy="0.00018" iyz="0"
+                    izz="0.000384" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="main_body_down_inertia" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.000141" ixy="0" ixz="0" 
+                    iyy="0.000144" iyz="0"
+                    izz="0.000284" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="main_body_up_inertia" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.00027" ixy="0" ixz="0" 
+                    iyy="0.00025" iyz="0"
+                    izz="0.000486" />
+        </inertial>
+    </xacro:macro>
+
+
+    <xacro:macro name="coxa_inertia_right" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.00002625" ixy="0" ixz="0" 
+                    iyy="0.000063" iyz="0"
+                    izz="0.00005725" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="femur_inertia_one_right" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.0000007" ixy="0" ixz="0" 
+                    iyy="0.00001" iyz="0"
+                    izz="0.00001" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="tibia_inertia_right" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.00036" ixy="0" ixz="0" 
+                    iyy="0.00036" iyz="0"
+                    izz="0.000013" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="coxa_inertia_left" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.000063" ixy="0" ixz="0" 
+                    iyy="0.00002625" iyz="0"
+                    izz="0.00005725" />
+        </inertial>
+    </xacro:macro>
+
+     <xacro:macro name="femur_inertia_one_left" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.00001" ixy="0" ixz="0" 
+                    iyy="0.0000007" iyz="0"
+                    izz="0.00001" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="tibia_inertia_left" params="m xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="0.00036" ixy="0" ixz="0" 
+                    iyy="0.00036" iyz="0"
+                    izz="0.000013" />
+        </inertial>
+    </xacro:macro>
+
+</robot>

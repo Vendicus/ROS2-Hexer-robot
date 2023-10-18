@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    
+
     <link name="base_link">
         <visual>
             <geometry>
@@ -9,6 +9,13 @@
             <origin xyz="0 0 -0.061" rpy="0 0 0" />
             <material name="black" />
         </visual>
+        <collision>
+            <geometry>
+                <box size="0.14 0.16 0.012" />
+            </geometry>
+            <origin xyz="0 0 0.011" rpy="0 0 0" />
+        </collision>
+        <xacro:main_body_inertia m="0.094" xyz="0 0 0" rpy="0 0 0" />
     </link>
     <link name="base_down_link">
         <visual>
@@ -16,8 +23,15 @@
                 <mesh filename="package://hexer_description/mesh/base/base_robot_down.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <origin xyz="0 -0.0017 -0.068" rpy="0 0 0" />
-            <material name="black" />
+            <material name="black" />       
         </visual>
+        <collision>
+            <geometry>
+                <box size="0.14 0.16 0.012" />
+            </geometry>
+            <origin xyz="0 0 0.011" rpy="0 0 0" />
+        </collision>
+        <xacro:main_body_down_inertia m="0.066" xyz="0 0 0" rpy="0 0 0" />
     </link>
     <link name="base_up_link">
         <visual>
@@ -25,8 +39,15 @@
                 <mesh filename="package://hexer_description/mesh/base/base_robot_up.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <origin xyz="0 0.0012 -0.068" rpy="0 0 0" />
-            <material name="black" />
+            <material name="black" />   
         </visual>
+        <collision>
+            <geometry>
+                <box size="0.14 0.16 0.012" />
+            </geometry>
+            <origin xyz="0 0 0.031" rpy="0 0 0" />
+        </collision>
+        <xacro:main_body_up_inertia m="0.135" xyz="0 0 0" rpy="0 0 0" />
     </link>
 
     <joint name="down_base_link" type="fixed">

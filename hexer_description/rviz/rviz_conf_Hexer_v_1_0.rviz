@@ -3,7 +3,10 @@ Panels:
     Help Height: 70
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Global Options1
+        - /RobotModel1
+        - /RobotModel1/Mass Properties1
       Splitter Ratio: 0.5
     Tree Height: 296
   - Class: rviz_common/Views
@@ -190,7 +193,7 @@ Visualization Manager:
           Show Trail: false
           Value: true
       Mass Properties:
-        Inertia: false
+        Inertia: true
         Mass: false
       Name: RobotModel
       TF Prefix: ""
@@ -264,55 +267,54 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          base_down_link:
-            {}
-          base_up_link:
-            {}
-          down_coxa_left_link:
-            down_femur_left_link:
-              down_femur_left_two_link:
-                {}
-              down_tibia_left_link:
-                {}
-          down_coxa_right_link:
-            down_femur_right_link:
-              down_femur_right_two_link:
-                {}
-              down_tibia_right_link:
-                {}
-          ground:
-            {}
-          mid_coxa_left_link:
-            mid_femur_left_link:
-              mid_femur_left_two_link:
-                {}
-              mid_tibia_left_link:
-                {}
-          mid_coxa_right_link:
-            mid_femur_right_link:
-              mid_femur_right_two_link:
-                {}
-              mid_tibia_right_link:
-                {}
-          up_coxa_left_link:
-            up_femur_left_link:
-              up_femur_left_two_link:
-                {}
-              up_tibia_left_link:
-                {}
-          up_coxa_right_link:
-            up_femur_right_link:
-              up_femur_right_two_link:
-                {}
-              up_tibia_right_link:
-                {}
+        ground:
+          base_link:
+            base_down_link:
+              {}
+            base_up_link:
+              {}
+            down_coxa_left_link:
+              down_femur_left_link:
+                down_femur_left_two_link:
+                  {}
+                down_tibia_left_link:
+                  {}
+            down_coxa_right_link:
+              down_femur_right_link:
+                down_femur_right_two_link:
+                  {}
+                down_tibia_right_link:
+                  {}
+            mid_coxa_left_link:
+              mid_femur_left_link:
+                mid_femur_left_two_link:
+                  {}
+                mid_tibia_left_link:
+                  {}
+            mid_coxa_right_link:
+              mid_femur_right_link:
+                mid_femur_right_two_link:
+                  {}
+                mid_tibia_right_link:
+                  {}
+            up_coxa_left_link:
+              up_femur_left_link:
+                up_femur_left_two_link:
+                  {}
+                up_tibia_left_link:
+                  {}
+            up_coxa_right_link:
+              up_femur_right_link:
+                up_femur_right_two_link:
+                  {}
+                up_tibia_right_link:
+                  {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 61; 56; 70
-    Fixed Frame: base_link
+    Fixed Frame: ground
     Frame Rate: 30
   Name: root
   Tools:
@@ -324,25 +326,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.6818296313285828
+      Distance: 0.8630945086479187
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.04299123212695122
-        Y: -0.007177480962127447
-        Z: -0.08745120465755463
+        X: -0.009086956270039082
+        Y: 0.04580264911055565
+        Z: 0.0046986243687570095
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.40000003576278687
+      Pitch: 0.7450004816055298
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.249983787536621
+      Yaw: 5.170023441314697
     Saved: ~
 Window Geometry:
   Displays:

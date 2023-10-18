@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
 <robot name="hexer_v_1_0" xmlns:xacro="http://www.ros.org/wiki/xacro">
     
-    <xacro:include filename="material.urdf.xacro" />
+    <xacro:include filename="material.xacro" />
+    <xacro:include filename="inertia.xacro" />
     <xacro:include filename="base.urdf.xacro" />
 
     <link name="ground" />
     <joint name="ground_base_link" type="fixed">
-        <parent link="base_link" />
-        <child link="ground" />
-        <origin xyz="0 0 -0.225" rpy="0 0 0" />
+        <parent link="ground" />
+        <child link="base_link" />
+        <origin xyz="0 0 0.225" rpy="0 0 0" />
     </joint>
 
     <xacro:macro name="leg_left" params="prefix origin_x origin_y origin_z">
@@ -20,6 +21,13 @@
                 <origin xyz="-0.0095 -0.02 -0.015" rpy="0 0 0" />
                 <material name="coxa" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.08 0.031 0.059" />
+                </geometry>
+                <origin xyz="-0.001 -0.0225 0.027" rpy="0 0 ${pi / 2.0}" />
+            </collision>
+            <xacro:coxa_inertia_left m="0.122" xyz="0 -0.03 0.02" rpy="0 0 0" />
         </link>
         <link name="${prefix}_femur_left_link">
             <visual>
@@ -29,6 +37,13 @@
                 <origin xyz="0 -0.035 -0.051" rpy="0 0 0" />
                 <material name="femur" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.09 0.008 0.032" />
+                </geometry>
+                <origin xyz="0.005 -0.035 -0.0025" rpy="0 0 ${pi / 2.0}" />
+            </collision>
+            <xacro:femur_inertia_one_left m="0.013" xyz="0.005 -0.035 0" rpy="0 0 0" />
         </link>
         <link name="${prefix}_femur_left_two_link">
             <visual>
@@ -38,6 +53,13 @@
                 <origin xyz="-0.024 -0.01 -0.051" rpy="0 0 ${pi}" />
                 <material name="femur" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.09 0.008 0.032" />
+                </geometry>
+                <origin xyz="-0.00425 -0.035 -0.0025" rpy="0 0 ${pi / 2.0}" />
+            </collision>
+            <xacro:femur_inertia_one_left m="0.013" xyz="-0.005 -0.035 0" rpy="0 0 0" />
         </link>
         <link name="${prefix}_tibia_left_link">
             <visual>
@@ -47,6 +69,13 @@
                 <origin xyz="0.01 -0.001 -0.0725" rpy="0 0 ${-pi / 2.0}" />
                 <material name="tibia" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.025 0.025 0.275" />
+                </geometry>
+                <origin xyz="0.02 0.002 -0.055" rpy="0 0 ${pi / 2.0}" />
+            </collision>
+            <xacro:tibia_inertia_left m="0.12" xyz="0.02 0 -0.04" rpy="0 0 0" />
         </link>
 
         <joint name="${prefix}_coxa_left_base" type="revolute">
@@ -90,6 +119,13 @@
                 <origin xyz="-0.067 0.0435 -0.0025" rpy="0 0 ${-pi / 2.0}" />
                 <material name="coxa" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.08 0.031 0.059" />
+                </geometry>
+                <origin xyz="0.0225 0 0.027" rpy="0 0 0" />
+            </collision>
+            <xacro:coxa_inertia_right m="0.122" xyz="0.03 0 0.02" rpy="0 0 0" />
         </link>
         <link name="${prefix}_femur_right_link">
             <visual>
@@ -99,6 +135,13 @@
                 <origin xyz="0.035 0 -0.051" rpy="0 0 ${-pi / 2.0}" />
                 <material name="femur" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.09 0.008 0.032" />
+                </geometry>
+                <origin xyz="0.035 -0.005 -0.0025" rpy="0 0 0" />
+            </collision>
+            <xacro:femur_inertia_one_right m="0.013" xyz="0.035 -0.005 0" rpy="0 0 0" />
         </link>
         <link name="${prefix}_femur_right_two_link">
             <visual>
@@ -108,6 +151,13 @@
                 <origin xyz="0.06 0.023 -0.051" rpy="0 0 ${-3.0*pi / 2.0}" />
                 <material name="femur" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.09 0.008 0.032" />
+                </geometry>
+                <origin xyz="0.035 0.00325 -0.0025" rpy="0 0 0" />
+            </collision>
+            <xacro:femur_inertia_one_right m="0.013" xyz="0.035 0.005 0" rpy="0 0 0" />
         </link>
         <link name="${prefix}_tibia_right_link">
             <visual>
@@ -117,6 +167,13 @@
                 <origin xyz="0.003 -0.01875 -0.19525" rpy="0 0 ${pi}" />
                 <material name="tibia" />
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.025 0.025 0.275" />
+                </geometry>
+                <origin xyz="-0.002 -0.02 -0.055" rpy="0 0 ${pi / 2.0}" />
+            </collision>
+            <xacro:tibia_inertia_right m="0.12" xyz="0 -0.02 -0.04" rpy="0 0 0" />
         </link>
 
 
