@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot name="hexer_v_1_0" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="leg_right" params="prefix origin_x origin_y origin_z">
+        <link name="${prefix}_coxa_right_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://hexer_description/mesh/leg/coxa_right.stl" scale="0.001 0.001 0.001" />
+                </geometry>
+                <origin xyz="-0.067 0.0435 -0.0025" rpy="0 0 ${-pi / 2.0}" />
+                <material name="coxa" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="0.08 0.031 0.059" />
+                </geometry>
+                <origin xyz="0.0225 0 0.027" rpy="0 0 0" />
+            </collision>
+            <xacro:coxa_inertia_right m="0.122" xyz="0.03 0 0.02" rpy="0 0 0" />
+        </link>
+        <link name="${prefix}_femur_right_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://hexer_description/mesh/leg/femur.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <origin xyz="0.035 0 -0.051" rpy="0 0 ${-pi / 2.0}" />
+                <material name="femur" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="0.09 0.008 0.032" />
+                </geometry>
+                <origin xyz="0.035 -0.005 -0.0025" rpy="0 0 0" />
+            </collision>
+            <xacro:femur_inertia_one_right m="0.013" xyz="0.035 -0.005 0" rpy="0 0 0" />
+        </link>
+        <link name="${prefix}_femur_right_two_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://hexer_description/mesh/leg/femur_two.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <origin xyz="0.06 0.023 -0.051" rpy="0 0 ${-3.0*pi / 2.0}" />
+                <material name="femur" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="0.09 0.008 0.032" />
+                </geometry>
+                <origin xyz="0.035 0.00325 -0.0025" rpy="0 0 0" />
+            </collision>
+            <xacro:femur_inertia_one_right m="0.013" xyz="0.035 0.005 0" rpy="0 0 0" />
+        </link>
+        <link name="${prefix}_tibia_right_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://hexer_description/mesh/leg/tibia_left.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <origin xyz="0.003 -0.01875 -0.19525" rpy="0 0 ${pi}" />
+                <material name="tibia" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="0.025 0.025 0.275" />
+                </geometry>
+                <origin xyz="-0.002 -0.02 -0.055" rpy="0 0 ${pi / 2.0}" />
+            </collision>
+            <xacro:tibia_inertia_right m="0.12" xyz="0 -0.02 -0.04" rpy="0 0 0" />
+        </link>
+
+
+        <joint name="${prefix}_coxa_right_base" type="revolute">
+            <parent link="base_link" />
+            <child link="${prefix}_coxa_right_link" />
+            <origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="0 0 0" />
+            <axis xyz="0 0 1" />
+            <limit lower="${-pi / 2.0}" upper="${pi / 2.0}" velocity="100" effort="100" />
+            <dynamics friction="0.5" damping="0.1" />
+        </joint>
+        <joint name="${prefix}_femur_right_coxa" type="revolute">
+            <parent link="${prefix}_coxa_right_link" />
+            <child link="${prefix}_femur_right_link" />
+            <origin xyz="0.0508 0.0385 0.018" rpy="0 0 0" />
+            <axis xyz="0 1 0" />
+            <limit lower="${-pi / 2.0}" upper="${pi / 2.0}" velocity="100" effort="100" />
+            <dynamics friction="0.5" damping="0.1" />
+        </joint>
+        <joint name="${prefix}_femur_right_two_femur" type="fixed">
+            <parent link="${prefix}_femur_right_link" />
+            <child link="${prefix}_femur_right_two_link" />
+            <origin xyz="0 -0.065 0" rpy="0 0 0" />
+        </joint>
+        <joint name="${prefix}_tibia_right_femur" type="revolute">
+            <parent link="${prefix}_femur_right_link" />
+            <child link="${prefix}_tibia_right_link" />
+            <origin xyz="0.07 -0.01 0" rpy="0 0 0" />
+            <axis xyz="0 1 0" />
+            <limit lower="${-pi / 2.0}" upper="${pi / 2.0}" velocity="100" effort="100" />
+            <dynamics friction="0.5" damping="0.1" />
+        </joint>
+    </xacro:macro>
+
+</robot>

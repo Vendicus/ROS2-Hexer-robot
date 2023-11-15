@@ -1,0 +1,20 @@
+<launch>
+    <let name="urdf_path" 
+        value="$(find-pkg-share hexer_description)/urdf/Hexer_v_1_0.urdf.xacro" />
+
+    <let name="rviz_path"
+        value="$(find-pkg-share hexer_bringup)/rviz/rviz_conf_Hexer_v_1_0.rviz" />
+
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description"
+            value="$(command 'xacro $(var urdf_path)')" />
+    </node>
+
+    <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py" />
+
+    <node pkg="gazebo_ros" exec="spawn_entity.py"
+            args="-topic robot_description -entity my_robot" />    
+
+    <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_path)" />    
+      
+</launch>

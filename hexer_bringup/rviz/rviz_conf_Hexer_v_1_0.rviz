@@ -1,0 +1,360 @@
+Panels:
+  - Class: rviz_common/Displays
+    Help Height: 70
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /RobotModel1
+        - /RobotModel1/Mass Properties1
+      Splitter Ratio: 0.5
+    Tree Height: 296
+  - Class: rviz_common/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz_default_plugins/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: ground
+      Value: true
+    - Alpha: 1
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description File: ""
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base_down_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_up_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_coxa_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_coxa_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_femur_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_femur_left_two_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_femur_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_femur_right_two_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_tibia_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        down_tibia_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ground:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        mid_coxa_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_coxa_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_femur_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_femur_left_two_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_femur_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_femur_right_two_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_tibia_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mid_tibia_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_coxa_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_coxa_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_femur_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_femur_left_two_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_femur_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_femur_right_two_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_tibia_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        up_tibia_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Mass Properties:
+        Inertia: true
+        Mass: false
+      Name: RobotModel
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base_down_link:
+          Value: true
+        base_link:
+          Value: true
+        base_up_link:
+          Value: true
+        down_coxa_left_link:
+          Value: true
+        down_coxa_right_link:
+          Value: true
+        down_femur_left_link:
+          Value: true
+        down_femur_left_two_link:
+          Value: true
+        down_femur_right_link:
+          Value: true
+        down_femur_right_two_link:
+          Value: true
+        down_tibia_left_link:
+          Value: true
+        down_tibia_right_link:
+          Value: true
+        ground:
+          Value: true
+        mid_coxa_left_link:
+          Value: true
+        mid_coxa_right_link:
+          Value: true
+        mid_femur_left_link:
+          Value: true
+        mid_femur_left_two_link:
+          Value: true
+        mid_femur_right_link:
+          Value: true
+        mid_femur_right_two_link:
+          Value: true
+        mid_tibia_left_link:
+          Value: true
+        mid_tibia_right_link:
+          Value: true
+        up_coxa_left_link:
+          Value: true
+        up_coxa_right_link:
+          Value: true
+        up_femur_left_link:
+          Value: true
+        up_femur_left_two_link:
+          Value: true
+        up_femur_right_link:
+          Value: true
+        up_femur_right_two_link:
+          Value: true
+        up_tibia_left_link:
+          Value: true
+        up_tibia_right_link:
+          Value: true
+      Marker Scale: 0.25
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        ground:
+          base_link:
+            base_down_link:
+              {}
+            base_up_link:
+              {}
+            down_coxa_left_link:
+              down_femur_left_link:
+                down_femur_left_two_link:
+                  {}
+                down_tibia_left_link:
+                  {}
+            down_coxa_right_link:
+              down_femur_right_link:
+                down_femur_right_two_link:
+                  {}
+                down_tibia_right_link:
+                  {}
+            mid_coxa_left_link:
+              mid_femur_left_link:
+                mid_femur_left_two_link:
+                  {}
+                mid_tibia_left_link:
+                  {}
+            mid_coxa_right_link:
+              mid_femur_right_link:
+                mid_femur_right_two_link:
+                  {}
+                mid_tibia_right_link:
+                  {}
+            up_coxa_left_link:
+              up_femur_left_link:
+                up_femur_left_two_link:
+                  {}
+                up_tibia_left_link:
+                  {}
+            up_coxa_right_link:
+              up_femur_right_link:
+                up_femur_right_two_link:
+                  {}
+                up_tibia_right_link:
+                  {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 61; 56; 70
+    Fixed Frame: ground
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 0.8630945086479187
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.009086956270039082
+        Y: 0.04580264911055565
+        Z: 0.0046986243687570095
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.7450004816055298
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 5.170023441314697
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 800
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd0000000100000000000001cb000002c6fc0200000002fb000000100044006900730070006c006100790073010000003d000001ab000000c900fffffffb0000000a0056006900650077007301000001ee00000115000000a400ffffff000002df000002c600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Views:
+    collapsed: false
+  Width: 1200
+  X: 70
+  Y: 243
